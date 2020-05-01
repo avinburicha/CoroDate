@@ -7,10 +7,10 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:minHeight="?android:attr/listPreferredItemHeight"
-android:paddingBottom="4dp"
+android:paddingBottom="@dimen/row_padding"
 android:paddingLeft="6dp"
 android:paddingRight="6dp"
-android:paddingTop="4dp">
+android:paddingTop="@dimen/row_padding">
 
 <ImageView
     android:id="@+id/countryImage"

@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.corodate.databinding.ActivityDetailBinding;
+import com.example.android.corodate.model.Corona;
+import com.example.android.corodate.utilities.CoronaDataJsonUtils;
+import com.google.gson.reflect.TypeToken;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -32,16 +35,17 @@ public class DetailActivity extends AppCompatActivity {
             if (intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
                 countryCoronaData = intentThatStartedThisActivity.getStringExtra(Intent.EXTRA_TEXT);
 
-                String[] coronaData = countryCoronaData.split(" ");
+                Corona coronaData = CoronaDataJsonUtils.gson.fromJson(countryCoronaData,
+                        new TypeToken<Corona>() {}.getType());
 
-                String country = coronaData[0];
-                String cases = coronaData[1];
-                String deaths = coronaData[2];
-                String recovered = coronaData[3];
-                String active = coronaData[4];
-                String casesToday = coronaData[5];
-                String deathsToday = coronaData[6];
-                String flag = coronaData[7];
+                String country = coronaData.getCountry();
+                String cases = String.valueOf(coronaData.getCases());
+                String deaths = String.valueOf(coronaData.getDeaths());
+                String recovered = String.valueOf(coronaData.getRecovered());
+                String active = String.valueOf(coronaData.getActive());
+                String casesToday = String.valueOf(coronaData.getTodayCases());
+                String deathsToday = String.valueOf(coronaData.getTodayDeaths());
+                String flag = coronaData.getCountryInfo().getFlag();
 
                 coronaDetailBinding.primaryInfo.primaryInfoCountry.setText(country);
                 coronaDetailBinding.extraInfo.casesCount.setText(cases);

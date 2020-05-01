@@ -1,19 +1,13 @@
 package com.example.android.corodate.utilities;
 
-import android.content.ContentValues;
-import android.content.Context;
+import com.example.android.corodate.model.Corona;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import com.example.android.corodate.MainActivity;
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public final class CoronaDataJsonUtils {
 
@@ -28,48 +22,20 @@ public final class CoronaDataJsonUtils {
     private static final String CORONA_JSON_COUNTRY_INFO = "countryInfo";
     private static final String CORONA_JSON_FLAG = "flag";
 
-    public static ArrayList<String>[] getSimpleCoronaCountryDataStringsFromJson(String jsonCoronaCountryDataStr)
+    public static Gson gson = new Gson();
+
+    public static ArrayList<Corona> getSimpleCoronaCountryDataStringsFromJson(String jsonCoronaCountryDataStr)
             throws JSONException {
 
-        ArrayList<String>[] parsedCoronaData = null;
+        ArrayList<Corona> parsedCoronaData = null;
 
         if(jsonCoronaCountryDataStr != null) {
-            JSONArray coronaCountryDataArray = new JSONArray(jsonCoronaCountryDataStr);
-
-            parsedCoronaData = new ArrayList[coronaCountryDataArray.length()];
-
-            for (int i = 0; i < coronaCountryDataArray.length(); i++) {
-                String country;
-                int cases;
-                int deaths;
-                int recovered;
-                int active;
-                int casesToday;
-                int deathsToday;
-                String flag;
-
-                JSONObject coronaData = coronaCountryDataArray.getJSONObject(i);
-
-                country = coronaData.getString(CORONA_JSON_COUNTRY);
-                cases = coronaData.getInt(CORONA_JSON_CASES);
-                deaths = coronaData.getInt(CORONA_JSON_DEATHS);
-                recovered = coronaData.getInt(CORONA_JSON_RECOVERED);
-                active = coronaData.getInt(CORONA_JSON_ACTIVE);
-                casesToday = coronaData.getInt(CORONA_JSON_CASES_TODAY);
-                deathsToday = coronaData.getInt(CORONA_JSON_DEATHS_TODAY);
-                flag = coronaData.getJSONObject(CORONA_JSON_COUNTRY_INFO).getString(CORONA_JSON_FLAG);
-
-                ArrayList<String> coronaDataList = new ArrayList<>();
-                coronaDataList.add(country);
-                coronaDataList.add(String.valueOf(cases));
-                coronaDataList.add(String.valueOf(deaths));
-                coronaDataList.add(String.valueOf(recovered));
-                coronaDataList.add(String.valueOf(active));
-                coronaDataList.add(String.valueOf(casesToday));
-                coronaDataList.add(String.valueOf(deathsToday));
-                coronaDataList.add(flag);
-
-                parsedCoronaData[i] = coronaDataList;
+            try {
+                parsedCoronaData = new ArrayList<>();
+                parsedCoronaData = gson.fromJson(jsonCoronaCountryDataStr.toString(),
+                        new TypeToken<List<Corona>>() {}.getType());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 

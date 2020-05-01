@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/corona_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/corona_error_image"
+        android:layout_width="200dp"
+        android:layout_height="196dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_error"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/corona_recyclerview"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <TextView
+        android:id="@+id/corona_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="sans-serif-dark"
+        android:padding="20dp"
+        android:text="@string/error_message"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/corona_error_image"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/corona_progress_bar"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        app:SpinKit_Color="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/corona_recyclerview"
+        app:layout_constraintEnd_toEndOf="@+id/corona_recyclerview"
+        app:layout_constraintStart_toStartOf="@+id/corona_recyclerview"
+        app:layout_constraintTop_toTopOf="@+id/corona_recyclerview"/>
+
+</android.support.constraint.ConstraintLayout>

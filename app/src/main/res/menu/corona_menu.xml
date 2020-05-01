@@ -4,25 +4,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.corodate.MainActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="1"
+        android:title="@string/action_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
     <item
         android:id="@+id/action_refresh"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/action_refresh"
-        android:icon="@drawable/ic_refresh_white_24dp"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/ic_refresh_black_24dp"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/overflowMenu"
-        android:icon="@drawable/ic_more_vert_white_24dp"
-        android:orderInCategory="1"
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:orderInCategory="3"
         app:showAsAction="always"
         android:title="">
 
         <menu>
             <item
-                android:id="@+id/action_source"
+                android:id="@+id/action_sort_country_asc"
                 android:orderInCategory="2"
-                android:title="@string/action_source"
+                android:title="@string/action_sort_country"
+                android:icon="@drawable/ic_arrow_upward_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/action_sort_country_desc"
+                android:orderInCategory="3"
+                android:title="@string/action_sort_country"
+                android:icon="@drawable/ic_arrow_downward_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/action_sort_cases_asc"
+                android:orderInCategory="4"
+                android:title="@string/action_sort_cases"
+                android:icon="@drawable/ic_arrow_upward_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/action_sort_cases_desc"
+                android:orderInCategory="5"
+                android:title="@string/action_sort_cases"
+                android:icon="@drawable/ic_arrow_downward_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/action_sort_deaths_asc"
+                android:orderInCategory="6"
+                android:title="@string/action_sort_deaths"
+                android:icon="@drawable/ic_arrow_upward_black_24dp"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/action_sort_deaths_desc"
+                android:orderInCategory="7"
+                android:title="@string/action_sort_deaths"
+                android:icon="@drawable/ic_arrow_downward_black_24dp"
                 app:showAsAction="never"/>
         </menu>
     </item>
